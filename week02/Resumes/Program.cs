@@ -15,9 +15,6 @@ class Program
         job1._startYear = 2019;
         job1._endYear = 2022;
 
-        // Call the method to display job details 
-        job1.Display();
-
         // Create new instance of class Job
         Job job2 = new Job();
 
@@ -27,9 +24,6 @@ class Program
         job2._startYear = 2022;
         job2._endYear = 2023;
 
-        // Call the method to display job details 
-        job2.Display();
-
         // Create new instance of class Resume
         Resume myResume = new Resume();
 
@@ -37,9 +31,9 @@ class Program
         myResume._jobs.Add(job1);
         myResume._jobs.Add(job2);
 
-        // Display the Job Title of the First Job of job1 that is in myResume
-        Console.WriteLine(myResume._jobs[0]._jobTitle);
+        myResume._name = "Allison Rose";
 
+        myResume.Display();
 
     }
 }
