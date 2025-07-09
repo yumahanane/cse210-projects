@@ -9,12 +9,15 @@ public class Journal
 
     public void AddEntry(Entry newEntry)
     {
-
+        _entries.Add(newEntry);
     }
 
     public void DisplayAll()
     {
-
+        foreach (Entry newEntry in _entries)
+        {
+            newEntry.Display();
+        }
     }
 
     public void SaveToFile(string file)
