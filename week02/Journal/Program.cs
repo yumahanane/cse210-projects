@@ -7,6 +7,10 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Journal Project.");
 
+        Console.Write("What is your name? ");
+        string writerName = Console.ReadLine();
+        string capitalizedName = char.ToUpper(writerName[0]) + writerName.Substring(1);
+
         // Create an instance of Journal
         Journal theJournal = new Journal();
 
@@ -27,20 +31,17 @@ class Program
             menu.ForEach(Console.WriteLine);
 
             // Get response from user
-            Console.Write("What would you like to do? ");
+            Console.Write($"What would you like to do, {capitalizedName}? ");
             choice = int.Parse(Console.ReadLine());
 
             if (choice == 1)
             {
                 // Create an instance of Entry and populate it
                 Entry anEntry = new Entry();
-                string dateText = "";
-                string thePrompt = "";
-                string response = "";
 
                 // Generate the date
                 DateTime theCurrentTime = DateTime.Now;
-                dateText = theCurrentTime.ToShortDateString();
+                string dateText = theCurrentTime.ToShortDateString();
 
                 anEntry._date = dateText;
 
@@ -56,16 +57,16 @@ class Program
                 // This assigns a value to the variable. That value is generated randomly
                 // using the GetRandomPrompt method. Then, it prints out in the console 
                 // that value, that is the chosen string.
-                thePrompt = promptsList.GetRandomPrompt();
+                string thePrompt = promptsList.GetRandomPrompt();
                 anEntry._promptText = thePrompt;
                 Console.WriteLine(thePrompt);
 
                 // Get answer from user
-                response = Console.ReadLine();
+                string response = Console.ReadLine();
                 anEntry._entryText = response;
 
                 // Append the entry to the journal
-                theJournal.AddEntry(anEntry);         
+                theJournal.AddEntry(anEntry);
             }
 
             else if (choice == 2)
