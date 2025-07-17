@@ -6,14 +6,15 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Fractions Project.");
 
-        Fraction fraction1 = new Fraction();
-        fraction1.Display();
+        
 
-        Fraction fraction2 = new Fraction(6);
-        fraction2.Display();
+        Fraction fraction3 = new Fraction();
+        fraction3.SetTop(6);
+        fraction3.SetBottom(7);
+        Console.WriteLine(fraction3.GetTop());
+        Console.WriteLine(fraction3.GetBottom());
 
-        Fraction fraction3 = new Fraction(6, 7);
-        fraction3.Display();
+       
 
     }
 }

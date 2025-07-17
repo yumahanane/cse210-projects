@@ -23,8 +23,25 @@ public class Fraction
         _bottom = bottom; ;
     }
 
-    public void Display()
+    public void SetTop(int top)
     {
-        Console.WriteLine($"{_top}/{_bottom}");
+        _top = top;
     }
+
+    public void SetBottom(int bottom)
+    {
+        _bottom = bottom;
+    }
+
+    public int GetTop()
+    {
+        return _top;
+    }
+
+    public int GetBottom()
+    {
+        return _bottom;
+    }
+
+    
 }
