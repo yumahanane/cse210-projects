@@ -7,10 +7,14 @@ class Program
     {
         Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
 
-        Reference reference = new Reference("James", 1, 5, 6);
+        Reference reference = new Reference("James", 1, 5);
 
-        // bad encapsulation. Need to fix this.
+
         Console.WriteLine(reference.GetDisplayText());
+
+        Reference reference1 = new Reference("James", 1, 5, 6);
+        Console.WriteLine(reference1.GetDisplayText());
+        
         
         
     }

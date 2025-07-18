@@ -24,17 +24,17 @@ public class Reference
 
     public string GetDisplayText()
     {
-        string ref = "";
+        string reference;
         if (_endVerse == 0)
         {
-            ref =_book + " " + _chapter + ":" + _verse;
+            reference =$"{_book} {_chapter}:{_verse}";
         }
         else
         {
-            ref = _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
+            reference = _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
         }
 
-        return ref;
+        return reference;
 
     }
 
