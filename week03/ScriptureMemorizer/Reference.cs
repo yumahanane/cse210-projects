@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 public class Reference
 {
     private string _book;
@@ -19,8 +21,15 @@ public class Reference
         _endVerse = endVerse;
     }
 
-    public string GetDisplayText()
+    public string GetDisplayText(string book, int chapter, int verse)
     {
-        return "";
+        return _book + " " + _chapter + ":" + _verse;
     }
+
+    public string GetDisplayText(string book, int chapter, int verse, int endVerse)
+    {
+        return _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
+    }
+
+    
 }
