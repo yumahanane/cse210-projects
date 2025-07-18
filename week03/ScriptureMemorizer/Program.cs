@@ -9,9 +9,9 @@ class Program
 
         Reference reference = new Reference("James", 1, 5, 6);
 
-
-        Console.WriteLine(reference.GetDisplayText("James", 1, 5));
-        Console.WriteLine(reference.GetDisplayText("James", 1, 5, 6));
+        // bad encapsulation. Need to fix this.
+        Console.WriteLine(reference.GetDisplayText());
+        
         
     }
 }

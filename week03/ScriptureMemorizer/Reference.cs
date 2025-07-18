@@ -12,6 +12,7 @@ public class Reference
         _book = book;
         _chapter = chapter;
         _verse = verse;
+        _endVerse = 0;
     }
     public Reference(string book, int chapter, int verse, int endVerse)
     {
@@ -21,14 +22,20 @@ public class Reference
         _endVerse = endVerse;
     }
 
-    public string GetDisplayText(string book, int chapter, int verse)
+    public string GetDisplayText()
     {
-        return _book + " " + _chapter + ":" + _verse;
-    }
+        string ref = "";
+        if (_endVerse == 0)
+        {
+            ref =_book + " " + _chapter + ":" + _verse;
+        }
+        else
+        {
+            ref = _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
+        }
 
-    public string GetDisplayText(string book, int chapter, int verse, int endVerse)
-    {
-        return _book + " " + _chapter + ":" + _verse + "-" + _endVerse;
+        return ref;
+
     }
 
     

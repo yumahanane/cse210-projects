@@ -9,25 +9,14 @@ public class Scripture
     {
         _reference = Reference;
 
-        //List<Word> _words = new List<Word>();
-        //Word aWord = new Word(text);
-        //string[] words = text.Split(' ');
-        //foreach (string word in words)
-        // {
-        // word = aWord;
-        //}
-        //string[] word = new string[]
-        //{
-        // text
-        //};
+        string[] words = text.Split(' ');
 
-        string[] word = text.Split(' ');
-        object[] eachWord = new object[word.Length];
-        for (int x = 0; x < word.Length; x++)
+        foreach (string word in words)
         {
-            eachWord[x] = word[x];
+            Word aWord = new Word(word);
+            _words.Add(aWord);
         }
-        
+
     }
 
     public void HideRandomWords(int numberToHide)
