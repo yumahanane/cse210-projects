@@ -26,6 +26,7 @@ public class Word
 
     public string GetDisplayText()
     {
+        
         int size = _text.Length;
         string underscore = "";
 
@@ -53,10 +54,31 @@ public class Word
         {
             underscore = "_ _ _ _";
         }
+        else if (size == 6)
+        {
+            underscore = "_ _ _ _ _ _";
+        }
+        else if (size == 7)
+        {
+            underscore = "_ _ _ _ _ _ _";
+        }
+        else if (size == 8)
+        {
+            underscore = "_ _ _ _ _ _ _ _";
+        }
+        else if (size == 9)
+        {
+            underscore = "_ _ _ _ _ _ _ _ _";
+        }
+        else if (size == 10)
+        {
+            underscore = "_ _ _ _ _ _ _ _ _ _ ";
+        }
 
         if (_isHidden == true)
         {
-            return _text.Replace(_text, underscore);
+            return $"{_text.Replace(_text, underscore)} ";
+
         }
         else
         {
