@@ -20,16 +20,33 @@ public class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
+        for (int i = 0; i <= numberToHide; i++)
+        {
+            var randomWords = new Random();
+            int index = randomWords.Next(_words.Count);
+            Word wordToHide = _words[index];
 
+            wordToHide.Hide(); // calls Hide() method to set _isHidden to true
+        }
+        
     }
 
     public string GetDisplayText()
     {
-        return "";
+        return $"{_reference.GetDisplayText()} {_words}";
     }
 
     public bool IsCompletelyHidden()
     {
+        foreach (Word word in _words)
+        {
+            if (word.IsHidden() == false)
+            {
+                return false;
+            }
+            
+        }
+
         return true;
     }
 

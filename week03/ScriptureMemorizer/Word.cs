@@ -6,6 +6,7 @@ public class Word
     public Word(string text)
     {
         _text = text;
+        _isHidden = false; // the default visibility is that the text/word is shown
     }
 
     public void Hide()
@@ -19,12 +20,12 @@ public class Word
     }
 
     public bool IsHidden()
-    {
-        return true;
+    {        
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        return _text;
     }
 }
