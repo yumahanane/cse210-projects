@@ -26,6 +26,42 @@ public class Word
 
     public string GetDisplayText()
     {
-        return _text;
+        int size = _text.Length;
+        string underscore = "";
+
+        if (size == 1)
+        {
+            underscore = "_";
+        }
+        
+        else if (size == 2)
+        {
+            underscore = "_ _";
+        }
+        
+        else if (size == 3)
+        {
+            underscore = "_ _ _";
+        }
+
+        else if (size == 4)
+        {
+            underscore = "_ _ _ _";
+        }
+
+        else if (size == 5)
+        {
+            underscore = "_ _ _ _";
+        }
+
+        if (_isHidden == true)
+        {
+            return _text.Replace(_text, underscore);
+        }
+        else
+        {
+            return _text;
+        }
+            
     }
 }

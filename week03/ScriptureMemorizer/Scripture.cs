@@ -20,7 +20,7 @@ public class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
-        for (int i = 0; i <= numberToHide; i++)
+        for (int i = 0; i < numberToHide; i++)
         {
             var randomWords = new Random();
             int index = randomWords.Next(_words.Count);
@@ -28,12 +28,16 @@ public class Scripture
 
             wordToHide.Hide(); // calls Hide() method to set _isHidden to true
         }
-        
     }
 
     public string GetDisplayText()
     {
-        return $"{_reference.GetDisplayText()} {_words}";
+        string text = "";
+        foreach (Word word in _words)
+        {
+            text += $"{word.GetDisplayText()} ";
+        }
+        return _reference.GetDisplayText() + " " + text;
     }
 
     public bool IsCompletelyHidden()
@@ -44,9 +48,7 @@ public class Scripture
             {
                 return false;
             }
-            
         }
-
         return true;
     }
 
