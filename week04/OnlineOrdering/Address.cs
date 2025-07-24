@@ -2,29 +2,49 @@ using System.Reflection.Metadata.Ecma335;
 
 public class Address
 {
-    private string _fullAddress;
+    private string _streetAddress;
+    private string _city;
+    private string _stateOrProvince;
+    private string _country;
 
-    public Address()
+
+    public Address(string streetAddress, string city, string stateOrProvince, string country)
     {
+        _streetAddress = streetAddress;
+        _city = city;
+        _stateOrProvince = stateOrProvince;
+        _country = country;
 
     }
+
+    /*
     public void SetAddress(string fullAddress)
     {
-        _fullAddress = fullAddress;
+        
     }
 
     public string GetFullAddress()
     {
-        return _fullAddress;
+        return 
     }
+    */
 
     public bool InUSA()
     {
-        return true; // only stub for now
+        if (_country == "USA")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public string Display()
     {
-        return _fullAddress; // not sure what "with newline characters where appropriate" means
+        //return _streetAddress + _city + ", " + _stateOrProvince + ", " + _country;
+        return $"{_streetAddress}\n{_city}, {_stateOrProvince}\n{_country}"; 
+
     }
 }
