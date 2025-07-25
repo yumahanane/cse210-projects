@@ -3,14 +3,24 @@ public class Order
     private List<Product> _products = new List<Product>();
     private Customer _customer;
 
-    public Order()
+    public Order(string productInfo, Customer Customer)
     {
+        _customer = Customer;
 
+        string[] parts = productInfo.Split(", ");
+
+        string productName = parts[0];
+        string productID = parts[1];
+        double price = double.Parse(parts[2]);
+        int quantity = int.Parse(parts[3]);
+
+        Product product = new Product(productName, productID, price, quantity);
+        _products.Add(product);
     }
 
     public void DisplayAll()
     {
-        List<decimal> costList = new List<decimal>();
+        List<double> costList = new List<double>();
 
         foreach (Product product in _products)
         {
@@ -30,7 +40,7 @@ public class Order
             shippingCost = 35;
         }
 
-        decimal totalOrderCost = costList.Sum() + shippingCost;
+        double totalOrderCost = costList.Sum() + shippingCost;
         Console.WriteLine($"Total Price: {totalOrderCost}");
 
         Console.WriteLine($"Packing Label: ");

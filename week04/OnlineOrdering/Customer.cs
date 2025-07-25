@@ -3,19 +3,20 @@ public class Customer
     private string _customerName;
     private Address _address;
 
-    public Customer()
-    {
-
-    }
-
-    public void SetCustomerName(string customerName)
+    public Customer(string customerName, string address)
     {
         _customerName = customerName;
-    }
 
-    public string GetCustomerName()
-    {
-        return _customerName;
+        string[] parts = address.Split(", ");
+
+        string streetAddress = parts[0];
+        string city = parts[1];
+        string stateOrProvince = parts[2];
+        string country = parts[3];
+
+        Address customerAddress = new Address(streetAddress, city, stateOrProvince, country);
+        _address = customerAddress;
+
     }
 
     public bool LiveInUSA()
@@ -25,7 +26,6 @@ public class Customer
 
     public void Display()
     {
-        Console.WriteLine(_customerName);
-        _address.Display();
+        Console.WriteLine($"Customer: {_customerName}\nAddress:\n{_address.Display()}");
     }
 }

@@ -2,10 +2,10 @@ public class Product
 {
     private string _productName;
     private string _productID;
-    private decimal _price;
+    private double _price;
     private int _quantity;
 
-    public Product(string productName, string productID, decimal price, int quantity)
+    public Product(string productName, string productID, double price, int quantity)
     {
         _productName = productName;
         _productID = productID;
@@ -13,9 +13,9 @@ public class Product
         _quantity = quantity;
     }
 
-    public decimal TotalProductCost()
+    public double TotalProductCost()
     {
-        return (decimal)_price * (decimal)_quantity;
+        return (double)_price * (double)_quantity;
     }
 
     public void Display()
@@ -23,5 +23,9 @@ public class Product
         Console.WriteLine(_productName);
         Console.WriteLine(_productID);
 
+    }
+    public string DisplayAll()
+    {
+        return $"{_productName}, {_productID}, {_price}, {_quantity}";
     }
 }
