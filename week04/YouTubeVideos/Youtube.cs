@@ -12,6 +12,7 @@ public class Youtube
         foreach (Video video in _videos)
         {
             video.Display();
+            Console.WriteLine();
         }
     }
 }
