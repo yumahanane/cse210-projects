@@ -26,6 +26,6 @@ public class Customer
 
     public void Display()
     {
-        Console.WriteLine($"Customer: {_customerName}\nAddress:\n{_address.Display()}");
+        Console.WriteLine($"{_customerName}\n{_address.Display()}");
     }
 }

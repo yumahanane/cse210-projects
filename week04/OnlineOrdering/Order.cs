@@ -3,22 +3,6 @@ public class Order
     private List<Product> _products = new List<Product>();
     private Customer _customer;
 
-    /*
-    public Order(string productInfo, Customer Customer)
-    {
-        _customer = Customer;
-
-        string[] parts = productInfo.Split(", ");
-
-        string productName = parts[0];
-        string productID = parts[1];
-        double price = double.Parse(parts[2]);
-        int quantity = int.Parse(parts[3]);
-
-        Product product = new Product(productName, productID, price, quantity);
-        _products.Add(product);
-    }
-    */
     public Order()
     {
 
@@ -41,7 +25,6 @@ public class Order
         foreach (Product product in _products)
         {
             costList.Add(product.TotalProductCost());
-
         }
 
         int shippingCost = 0;
@@ -50,7 +33,6 @@ public class Order
         {
             shippingCost = 5;
         }
-
         else
         {
             shippingCost = 35;
@@ -58,15 +40,19 @@ public class Order
 
         double totalOrderCost = costList.Sum() + shippingCost;
         Console.WriteLine($"Total Price: {totalOrderCost}");
+        Console.WriteLine();
 
         Console.WriteLine($"Packing Label: ");
         foreach (Product product in _products)
         {
             product.Display();
         }
+        Console.WriteLine();
 
-        //Console.WriteLine($"Shipping Label: {_customer.Display()} "); // Argument 1: 
-        // cannot convert from 'void' to 'object?' Error CS1503 
+        Console.WriteLine($"Shipping Label: ");
+        _customer.Display();
+
+        Console.WriteLine("_______________________________________");
 
     }
 }

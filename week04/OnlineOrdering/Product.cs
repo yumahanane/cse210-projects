@@ -20,12 +20,7 @@ public class Product
 
     public void Display()
     {
-        Console.WriteLine(_productName);
-        Console.WriteLine(_productID);
+        Console.WriteLine($"{_productName} {_productID}");
 
-    }
-    public string DisplayAll()
-    {
-        return $"{_productName}, {_productID}, {_price}, {_quantity}";
     }
 }

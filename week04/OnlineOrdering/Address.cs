@@ -17,18 +17,6 @@ public class Address
 
     }
 
-    /*
-    public void SetAddress(string fullAddress)
-    {
-        
-    }
-
-    public string GetFullAddress()
-    {
-        return 
-    }
-    */
-
     public bool InUSA()
     {
         if (_country == "USA")
@@ -43,7 +31,6 @@ public class Address
 
     public string Display()
     {
-        //return _streetAddress + _city + ", " + _stateOrProvince + ", " + _country;
         return $"{_streetAddress}\n{_city}, {_stateOrProvince}\n{_country}"; 
 
     }
