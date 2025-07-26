@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+        Console.WriteLine();
 
         // Create an instance of Youtube 
         Youtube youtube = new Youtube();
@@ -28,7 +29,7 @@ class Program
 
         Comment video1Comment2 = new Comment();
         video1Comment2._name = "@rookisthebestbeacuseyes";
-        video1Comment2._text = "Doubt not is a phrase that inspires me i may not be perfect but i know that i have jesus on my side thank you";
+        video1Comment2._text = "Doubt not is a phrase that inspires me i may not be perfect\nbut i know that i have jesus on my side thank you";
         //Append the comment to the list of comments
         video1._comments.Add(video1Comment2);
 
@@ -59,14 +60,14 @@ class Program
 
         Comment video2Comment1 = new Comment();
         video2Comment1._name = "@isabellamahoney1928";
-        video2Comment1._text = "Heavenly father showed me I wasn't alone in the darkest time of my life, even when I couldn't feel him their.";
+        video2Comment1._text = "Heavenly father showed me I wasn't alone in the darkest time of my life,\neven when I couldn't feel him their.";
         //Append the comment to the list of comments
         video2._comments.Add(video2Comment1);
 
 
         Comment video2Comment2 = new Comment();
         video2Comment2._name = "@rejeangican4768";
-        video2Comment2._text = "Thank you so much for this powerful song. Thank you for reminding me that He is always there";
+        video2Comment2._text = "Thank you so much for this powerful song. Thank you for reminding me\nthat He is always there";
         //Append the comment to the list of comments
         video2._comments.Add(video2Comment2);
 
@@ -111,7 +112,7 @@ class Program
 
         Comment video3Comment2 = new Comment();
         video3Comment2._name = "@dianewilson3599";
-        video3Comment2._text = "This is a beautiful song that reminds us that we are a daughter of a Heavenly Father and we have infinite worth.";
+        video3Comment2._text = "This is a beautiful song that reminds us that we are a daughter of a Heavenly Father\nand we have infinite worth.";
         //Append the comment to the list of comments
         video3._comments.Add(video3Comment2);
 
@@ -155,7 +156,7 @@ class Program
 
         Comment video4Comment3 = new Comment();
         video4Comment3._name = "@GrantR-fv2hj";
-        video4Comment3._text = "This was sang by Elder Morris, he was a missionary in my area. He was a great guy! I can remember his voice well. I hope he is doing well!";
+        video4Comment3._text = "This was sang by Elder Morris, he was a missionary in my area. He was a great guy!\nI can remember his voice well. I hope he is doing well!";
         //Append the comment to the list of comments
         video4._comments.Add(video4Comment3);
 

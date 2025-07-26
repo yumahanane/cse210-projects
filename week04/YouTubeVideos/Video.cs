@@ -12,8 +12,8 @@ public class Video
 
     public int GetNumberOfComments()
     {
-        int num = _comments.Count;
-        return num;
+        return _comments.Count;
+        
     }
 
     public void Display()
@@ -28,5 +28,6 @@ public class Video
         {
             comment.Display();
         }
+        Console.WriteLine();
     }
 }
