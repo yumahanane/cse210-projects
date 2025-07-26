@@ -3,20 +3,14 @@ public class Customer
     private string _customerName;
     private Address _address;
 
-    public Customer(string customerName, string address)
+    public Customer(string customerName)
     {
         _customerName = customerName;
+    }
 
-        string[] parts = address.Split(", ");
-
-        string streetAddress = parts[0];
-        string city = parts[1];
-        string stateOrProvince = parts[2];
-        string country = parts[3];
-
-        Address customerAddress = new Address(streetAddress, city, stateOrProvince, country);
-        _address = customerAddress;
-
+    public void SetAddress(Address address)
+    {
+        _address = address;
     }
 
     public bool LiveInUSA()
