@@ -1,12 +1,14 @@
 using System.Runtime.InteropServices;
 
-public class ListingActivity
+public class ListingActivity : Activity
 {
     private int _count;
     private List<string> _prompts = new List<string>();
 
-    public ListingActivity()
+    public ListingActivity(string name, string description, int duration, List<string> prompts) : base(name, description, duration)
     {
+        _count = 0;
+        _prompts = prompts;
 
     }
 
