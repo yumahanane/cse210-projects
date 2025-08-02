@@ -34,7 +34,7 @@ public class Activity
         Console.Clear();
         Console.WriteLine("Get ready... ");
         //spinner
-        ShowSpinner();
+        ShowSpinner(5);
         Console.WriteLine();
 
     }
@@ -49,13 +49,13 @@ public class Activity
         Console.WriteLine();
         Console.WriteLine("Well done!!");
         //spinner
-        ShowSpinner();
+        ShowSpinner(5);
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
         //spinner
-        ShowSpinner();
+        ShowSpinner(5);
     }
 
-    public void ShowSpinner()
+    public void ShowSpinner(int seconds)
     {
         List<string> animations = new List<string>();
         animations.Add("|");
@@ -67,11 +67,25 @@ public class Activity
         animations.Add("-");
         animations.Add("\\");
 
-        foreach (string a in animations)
+        DateTime start = DateTime.Now;
+        DateTime future = start.AddSeconds(seconds);
+
+        int i = 0;
+
+        while (DateTime.Now < future)
         {
+            string a = animations[i];
             Console.Write(a);
-            Thread.Sleep(1000);
+            Thread.Sleep(700);
             Console.Write("\b \b");
+
+            i++;
+
+            if (i >= animations.Count)
+            {
+                i = 0;
+            }
+            
         }
     }
 

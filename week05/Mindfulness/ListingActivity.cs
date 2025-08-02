@@ -21,10 +21,10 @@ public class ListingActivity : Activity
         GetRandomPrompt();
         Console.WriteLine();
         Console.Write("You may begin in: ");
-        //countdown 3s
-        ShowCountDown(3);
+        //countdown 5s
+        ShowCountDown(5);
         Console.WriteLine();
-        GetLIstFromUser(); 
+        GetLIstFromUser();
         Console.WriteLine($"You listed {_count} items!");
 
     }
@@ -55,6 +55,6 @@ public class ListingActivity : Activity
             _count++;
         }
         return userList;
-        
+
     }
 }

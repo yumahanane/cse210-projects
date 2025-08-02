@@ -11,6 +11,7 @@ class Program
 
         while (choice != 4)
         {
+            Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("   1. Start breathing activity");
             Console.WriteLine("   2. Start reflecting activity");
@@ -23,7 +24,7 @@ class Program
             {
                 BreathingActivity breathAct = new BreathingActivity();
                 breathAct.SetName("Breathing Activity");
-                breathAct.SetDescription("relax by walking your through breathing in and out slowly.\nClear your mind and focus on your breathing.");
+                breathAct.SetDescription("relax by walking your through breathing in and out slowly.\nClear your mind and focus on your breathing");
 
                 breathAct.DisplayStartingMessage();
                 breathAct.Run();
