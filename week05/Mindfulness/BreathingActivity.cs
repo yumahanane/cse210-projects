@@ -1,12 +1,26 @@
 public class BreathingActivity : Activity
 {
-    public BreathingActivity(string name, string description, int duration) : base(name, description, duration)
+    public BreathingActivity() : base()
     {
-        
+
     }
 
     public void Run()
     {
+        DateTime start = DateTime.Now;
+        DateTime future = start.AddSeconds(GetDuration());
 
+        while (DateTime.Now < future)
+        {
+            Console.Write("Breath in...");
+            //countdown 8s
+            ShowCountDown(8);
+            Console.WriteLine();
+            Console.Write("Now breath out...");
+            //countdown 8s
+            ShowCountDown(8);
+            Console.WriteLine();
+            Console.WriteLine();
+        }
     }
 }
