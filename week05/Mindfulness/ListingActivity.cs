@@ -40,6 +40,9 @@ public class ListingActivity : Activity
 
     public List<string> GetLIstFromUser()
     {
+        Console.WriteLine("If you would like to save your answers to a file, press 1. If not, press 2.");
+        int choice = int.Parse(Console.ReadLine());
+
         // must be called right after Run()
         List<string> userList = new List<string>();
 
@@ -49,9 +52,23 @@ public class ListingActivity : Activity
 
         while (DateTime.Now < future)
         {
-            // for each response, add to the list
-            Console.Write("> ");
-            userList.Add(Console.ReadLine());
+            if (choice == 1)
+            {
+                // for each response, add to the list
+                Console.Write("> ");
+                userList.Add(Console.ReadLine());
+
+                string filePath = @"C:\Users\yumas\OneDrive\Documents\cse21000\demo\test.txt";
+
+                File.WriteAllLines(filePath, userList);
+            }
+
+            else
+            {
+                // for each response, add to the list
+                Console.Write("> ");
+                userList.Add(Console.ReadLine());
+            }
             _count++;
         }
         return userList;
