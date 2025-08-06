@@ -29,7 +29,7 @@ public class Activity
         Console.WriteLine($"This activity will help you {_description}.");
         Console.WriteLine();
         Console.Write("How long, in seconds, would you like for your session? ");
-        _duration = int.Parse(Console.ReadLine());
+        _duration = int.Parse(Console.ReadLine()); // setting a value for _duration
 
         Console.Clear();
         Console.WriteLine("Get ready... ");
@@ -41,7 +41,7 @@ public class Activity
 
     public int GetDuration()
     {
-        return _duration;
+        return _duration; //called by other classes methods
     }
 
     public void DisplayEndingMessage()
@@ -72,16 +72,16 @@ public class Activity
 
         int i = 0;
 
-        while (DateTime.Now < future)
+        while (DateTime.Now < future) 
         {
             string a = animations[i];
             Console.Write(a);
-            Thread.Sleep(700);
+            Thread.Sleep(700); //so that it will not take much time for each string to show
             Console.Write("\b \b");
 
             i++;
 
-            if (i >= animations.Count)
+            if (i >= animations.Count) 
             {
                 i = 0;
             }

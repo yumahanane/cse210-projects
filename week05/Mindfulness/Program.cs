@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+// Showing Creativity: 
+// In the ListingActivity class, the user is prompted if they would like to 
+// write/save their responses into a file. 
+
 class Program
 {
     static void Main(string[] args)
@@ -11,12 +15,13 @@ class Program
 
         while (choice != 4)
         {
-            Console.Clear();
+            Console.Clear(); //Ensures that everytime  the menu shows, it shows in a cleared console
             Console.WriteLine("Menu Options:");
             Console.WriteLine("   1. Start breathing activity");
             Console.WriteLine("   2. Start reflecting activity");
             Console.WriteLine("   3. Start listing activity");
             Console.WriteLine("   4. Quit");
+
             Console.Write("Select a choice from the menu: ");
             choice = int.Parse(Console.ReadLine());
 
@@ -37,12 +42,13 @@ class Program
                 reflectAct.SetName("Reflecting Activity");
                 reflectAct.SetDescription("reflect on times in your life when you have shown strength and resilience.\nThis will help you recognize the power you have and how you can use it in other aspects of your life");
 
+                //Populating the prompt list
                 reflectAct.AddPrompt("Think of a time when you stood up for someone else.");
-
                 reflectAct.AddPrompt("Think of a time when you did something really difficult.");
                 reflectAct.AddPrompt("Think of a time when you helped someone in need.");
                 reflectAct.AddPrompt("Think of a time when you did something truly selfless.");
 
+                //Populating the question list
                 reflectAct.AddQuestion("Why was this experience meaningful to you?");
                 reflectAct.AddQuestion("Have you ever done anything like this before?");
                 reflectAct.AddQuestion("How did you get started?");
@@ -65,6 +71,7 @@ class Program
                 listAct.SetName("Listing Activity");
                 listAct.SetDescription("reflect on good things in your life by having you list as many\nthings as you can in a certain area");
 
+                //Populating the propmt list
                 listAct.AddPrompt("Who are people that you appreciate?");
                 listAct.AddPrompt("What are personal strengths of yours?");
                 listAct.AddPrompt("Who are people that you have helped this week?");

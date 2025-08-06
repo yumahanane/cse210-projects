@@ -16,10 +16,13 @@ public class BreathingActivity : Activity
             //countdown 4s
             ShowCountDown(4);
             Console.WriteLine();
+
+            // Added a hold in 
             Console.Write("Hold in...");
             //countdown 7s
             ShowCountDown(7);
             Console.WriteLine();
+
             Console.Write("Now breath out...");
             //countdown 8s
             ShowCountDown(8);

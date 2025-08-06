@@ -20,11 +20,14 @@ public class ListingActivity : Activity
         Console.WriteLine("List as many responses you can to the following prompt:");
         GetRandomPrompt();
         Console.WriteLine();
+
         Console.Write("You may begin in: ");
         //countdown 5s
         ShowCountDown(5);
         Console.WriteLine();
-        GetLIstFromUser();
+
+        // Calls the method so that the user can write a list of responses
+        GetListFromUser();
         Console.WriteLine($"You listed {_count} items!");
 
     }
@@ -38,8 +41,9 @@ public class ListingActivity : Activity
 
     }
 
-    public List<string> GetLIstFromUser()
+    public List<string> GetListFromUser()
     {
+        //Prompt the user if they would like to write their responses into a file 
         Console.WriteLine("If you would like to save your answers to a file, press 1. If not, press 2.");
         int choice = int.Parse(Console.ReadLine());
 
@@ -58,12 +62,12 @@ public class ListingActivity : Activity
                 Console.Write("> ");
                 userList.Add(Console.ReadLine());
 
-                string filePath = @"C:\Users\yumas\OneDrive\Documents\cse21000\demo\test.txt";
+                string filePath = @"C:\Users\yumas\OneDrive\Documents\cse210\cse210-projects\week05\Mindfulness\MyJournal.txt";
 
                 File.WriteAllLines(filePath, userList);
             }
 
-            else
+            else //If the user chooses 2 or presses any other number, their answers will only be showing in the console 
             {
                 // for each response, add to the list
                 Console.Write("> ");
