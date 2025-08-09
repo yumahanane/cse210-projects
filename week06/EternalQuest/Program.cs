@@ -6,11 +6,26 @@ class Program
     {
         Console.WriteLine("Hello World! This is the EternalQuest Project.");
 
-        //SimpleGoal goal = new SimpleGoal("Give a talk", "Speak in Sacrament meeting when asked", "100");
-        // Console.WriteLine(goal.GetDetailsString());
-       
-        //ChecklistGoal goal = new ChecklistGoal("Give a talk", "Speak in Sacrament meeting when asked", "100", 3, 500);
-        //Console.WriteLine(goal.GetDetailsString());
+        GoalManager goalManager = new GoalManager();
+
+        int choice = 0;
+
+        while (choice != 6)
+        {
+            goalManager.Start();
+
+            Console.Write("Select a choice from the menu: ");
+            choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                goalManager.CreateGoal();
+
+            }
+
+        }
+        
+
 
     }
 }

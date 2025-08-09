@@ -1,3 +1,6 @@
+using System.Formats.Asn1;
+using System.Security.Cryptography;
+
 public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
@@ -6,18 +9,32 @@ public class GoalManager
     public GoalManager()
     {
     }
+    
 
     public void Start()
     {
+        Console.WriteLine();
+        DisplayPlayerInfo();
+        Console.WriteLine();
+
+        Console.WriteLine("Menu Options:");
+        Console.WriteLine("  1. Create New Goal");
+        Console.WriteLine("  2. List Goals");
+        Console.WriteLine("  3. Save Goals");
+        Console.WriteLine("  4. Load Goals");
+        Console.WriteLine("  5. Record Event");
+        Console.WriteLine("  6. Quit");
 
     }
     public void DisplayPlayerInfo()
     {
-
+        Console.WriteLine($"You have {_score} points");
     }
     public void ListGoalNames()
     {
-
+        Console.WriteLine("  1. Simple Goal");
+        Console.WriteLine("  2. Eternal Goal");
+        Console.WriteLine("  3. Checklist Goal");
     }
 
     public void ListGoalDetails()
@@ -27,7 +44,67 @@ public class GoalManager
 
     public void CreateGoal()
     {
+        ListGoalNames();
+        Console.Write("Which type of goal would you like to create? ");
+        int choice = int.Parse(Console.ReadLine());
 
+        string name = "";
+        string description = "";
+        string points = "";
+        int target = 0;
+        int bonus = 0;
+
+
+        if (choice == 1)
+        {
+            Console.Write("What is the name of your goal? ");
+            name = Console.ReadLine();
+            Console.Write("What is a short description of it? ");
+            description = Console.ReadLine();
+            Console.Write("What is the amount of points associated with this goal? ");
+            points = Console.ReadLine();
+
+            SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
+            //_goals.add(simpleGoal);
+            Console.WriteLine(simpleGoal.GetDetailsString());
+
+        }
+        else if (choice == 2)
+        {
+            Console.Write("What is the name of your goal? ");
+            name = Console.ReadLine();
+            Console.Write("What is a short description of it? ");
+            description = Console.ReadLine();
+            Console.Write("What is the amount of points associated with this goal? ");
+            points = Console.ReadLine();
+
+            EternalGoal eternalGoal = new EternalGoal(name, description, points);
+            //_goals.add(eteranlGoal);
+            eternalGoal.GetDetailsString();
+        }
+
+        else if (choice == 3)
+        {
+            Console.Write("What is the name of your goal? ");
+            name = Console.ReadLine();
+            Console.Write("What is a short description of it? ");
+            description = Console.ReadLine();
+            Console.Write("What is the amount of points associated with this goal? ");
+            points = Console.ReadLine();
+            Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+            target = int.Parse(Console.ReadLine());
+            Console.Write("What is the bonus for accomplishing it that many times? ");
+            bonus = int.Parse(Console.ReadLine());
+
+            ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, target, bonus);
+            //_goals.add(checklistGoal);
+            Console.WriteLine(checklistGoal.GetDetailsString());
+
+
+
+        }
+        
+        
     }
     public void RecordEvent()
     {
@@ -41,7 +118,7 @@ public class GoalManager
 
     public void LoadGoals()
     {
-        
+
     }
      
 
