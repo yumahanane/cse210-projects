@@ -21,7 +21,11 @@ class Program
             {
                 goalManager.CreateGoal();
 
+
             }
+            goalManager.ListGoalDetails();
+            goalManager.SaveGoals();
+            goalManager.LoadGoals();
 
         }
         
