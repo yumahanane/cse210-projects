@@ -13,6 +13,7 @@ public class ChecklistGoal : Goal
     }
 
 
+
     public override void RecordEvent()
     {
 
@@ -42,7 +43,7 @@ public class ChecklistGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return "";
+        return $"ChecklistGoal:{GetShortName()},{GetDescription()},{Getpoints()},{_bonus},{_target},{_amountCompleted}";  
     }
 
 

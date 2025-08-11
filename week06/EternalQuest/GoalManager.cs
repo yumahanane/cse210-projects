@@ -11,6 +11,10 @@ public class GoalManager
     {
     }
 
+    public List<Goal> GetGoals()
+    {
+        return _goals;
+    }
 
     public void Start()
     {
@@ -51,6 +55,8 @@ public class GoalManager
         }
 
     }
+
+
 
     public void CreateGoal()
     {
@@ -111,43 +117,64 @@ public class GoalManager
     }
     public void RecordEvent()
     {
+        Console.Write("The goals are: ");
+        
+
+
+        Console.Write("Which goal did you accomplish? ");
+        //int answer = int.Parse(Console.ReadLine());
+
+        
+        
+
+
 
     }
 
-    public void SaveGoals()
+    public void SaveGoals() //save score
     {
+        List<string> goalStringList = new List<string>();
 
-        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
-        string filename = Console.ReadLine();
-
-
-        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
-        string filePath = Path.Combine(paths);
-
-        using (StreamWriter outputFile = new StreamWriter(filePath))
+        foreach (Goal goal in _goals)
         {
-            outputFile.WriteLine();
             
+            goalStringList.Add(goal.GetStringRepresentation());
+         
         }
 
-    }
-
-    public void LoadGoals()
-    {
         Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
         string filename = Console.ReadLine();
 
 
         string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
+
+
+        File.WriteAllLines(filePath, goalStringList);
+
+    }
+
+    public void LoadGoals()  
+    {
+
+        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        string filename = Console.ReadLine();
+
+
+        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string filePath = Path.Combine(paths);
+
 
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split(",");
-            Console.WriteLine(parts);
+            string[] parts = line.Split(":");
+
+            string goalName = parts[0];
+           
         }
+
 
         Console.ReadLine();
 

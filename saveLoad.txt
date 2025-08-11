@@ -1,0 +1,40 @@
+
+public void SaveGoals() //save score
+    {
+
+        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        string filename = Console.ReadLine();
+
+
+        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string filePath = Path.Combine(paths);
+
+        using (StreamWriter outputFile = new StreamWriter(filePath))
+        {
+            outputFile.WriteLine();
+            
+        }
+
+    }
+
+    public void LoadGoals() //load score 
+    {
+        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        string filename = Console.ReadLine();
+
+
+        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string filePath = Path.Combine(paths);
+
+        string[] lines = System.IO.File.ReadAllLines(filePath);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+            Console.WriteLine(parts);
+        }
+
+        Console.ReadLine();
+
+
+    }

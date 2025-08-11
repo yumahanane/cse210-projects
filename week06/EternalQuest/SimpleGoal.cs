@@ -9,6 +9,7 @@ public class SimpleGoal : Goal
 
     public override void RecordEvent()
     {
+         
         
 
     }
@@ -20,7 +21,7 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return "";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{Getpoints()},{IsComplete()}";
     }
 
 }
