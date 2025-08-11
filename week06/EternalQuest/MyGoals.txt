@@ -1,3 +1,4 @@
-study:everyday,40,True
-eat:healthy,40
-walk:always,40,500,3,0
+0
+SimpleGoal:eat,today,40,True
+EternalGoal:walk,everyday,20
+ChecklistGoal:pray,three times a day,10,500,3,0

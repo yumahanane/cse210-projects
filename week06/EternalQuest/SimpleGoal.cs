@@ -9,19 +9,19 @@ public class SimpleGoal : Goal
 
     public override void RecordEvent()
     {
-         
-        
+        GetPoints();
+        _isComplete = true;
 
     }
 
     public override bool IsComplete()
     {
-        return true;
+        return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{GetShortName()},{GetDescription()},{Getpoints()},{IsComplete()}";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}";
     }
 
 }

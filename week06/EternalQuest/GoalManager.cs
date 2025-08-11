@@ -1,6 +1,7 @@
 using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.IO;
+using System.Threading.Channels;
 
 public class GoalManager
 {
@@ -11,10 +12,6 @@ public class GoalManager
     {
     }
 
-    public List<Goal> GetGoals()
-    {
-        return _goals;
-    }
 
     public void Start()
     {
@@ -55,8 +52,6 @@ public class GoalManager
         }
 
     }
-
-
 
     public void CreateGoal()
     {
@@ -117,44 +112,69 @@ public class GoalManager
     }
     public void RecordEvent()
     {
-        Console.Write("The goals are: ");
-        
+        Console.WriteLine("The goals are: ");
 
+        string[] nameParts;
+        string goalName = "";
 
-        Console.Write("Which goal did you accomplish? ");
-        //int answer = int.Parse(Console.ReadLine());
-
-        
-        
-
-
-
-    }
-
-    public void SaveGoals() //save score
-    {
-        List<string> goalStringList = new List<string>();
-
+        int i = 1;
         foreach (Goal goal in _goals)
         {
-            
-            goalStringList.Add(goal.GetStringRepresentation());
-         
+            string line = goal.GetStringRepresentation();
+            nameParts = line.Split(":");
+
+            goalName = nameParts[0];
+
+            Console.Write($"{i}. ");
+            Console.WriteLine(goalName);
+            i++;
         }
 
+        Console.Write("Which goal did you accomplish? ");
+        int answer = int.Parse(Console.ReadLine());
+        int index = answer - 1; // To account for index 0
+
+        int points = int.Parse(_goals[index].GetPoints()); // Get the points of that specific goal
+
+      
+        _score += points; // Add the points to the total score
+
+        
+        Console.WriteLine($"Congratulations! You have earned {points} points!");
+        Console.WriteLine($"You now have {_score} points!");
+        
+    }
+
+    public void SaveGoals() 
+    {
         Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
         string filename = Console.ReadLine();
 
 
-        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string[] paths = {@"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
 
+        using (StreamWriter outputFile = new StreamWriter(filePath))
+        {
+            outputFile.WriteLine(_score);
 
-        File.WriteAllLines(filePath, goalStringList);
+            List<string> goalStringList = new List<string>();
+
+            foreach (Goal goal in _goals)
+            {
+                goalStringList.Add(goal.GetStringRepresentation());
+            }
+
+            foreach (String s in goalStringList)
+            {
+                outputFile.WriteLine(s);
+            }  
+            
+        }
 
     }
 
-    public void LoadGoals()  
+    public void LoadGoals()
     {
 
         Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
@@ -163,20 +183,35 @@ public class GoalManager
 
         string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
+
+        //File.ReadAllLines(filePath);
 
 
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split(":");
+            string[] goalparts = line.Split(":");
 
-            string goalName = parts[0];
-           
+            string goalType = goalparts[0];
+
+        }
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+
+            string name = parts[0];
+            string description = parts[1];
+                    
+
+
+
         }
 
 
-        Console.ReadLine();
+
+        //Console.ReadLine();
 
 
     }

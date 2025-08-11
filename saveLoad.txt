@@ -37,4 +37,28 @@ public void SaveGoals() //save score
         Console.ReadLine();
 
 
+public void SaveGoals() //save score
+    {
+        List<string> goalStringList = new List<string>();
+
+        foreach (Goal goal in _goals)
+        {
+            
+            goalStringList.Add(goal.GetStringRepresentation());
+         
+        }
+
+        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        string filename = Console.ReadLine();
+
+
+        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string filePath = Path.Combine(paths);
+
+
+        File.WriteAllLines(filePath, goalStringList);
+
+    }
+
+
     }

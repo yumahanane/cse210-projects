@@ -7,18 +7,18 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-
+        GetPoints();
     }
 
     public override bool IsComplete()
     {
-        return true;
+        return false;
     }
 
     public override string GetStringRepresentation()
     {
-        return $"EternalGoal:{GetShortName()},{GetDescription()},{Getpoints()}";
-        
+        return $"EternalGoal:{GetShortName()},{GetDescription()},{GetPoints()}";
+
     }
 
 }
