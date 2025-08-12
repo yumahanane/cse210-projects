@@ -136,22 +136,22 @@ public class GoalManager
 
         int points = int.Parse(_goals[index].GetPoints()); // Get the points of that specific goal
 
-      
+
         _score += points; // Add the points to the total score
 
-        
+
         Console.WriteLine($"Congratulations! You have earned {points} points!");
         Console.WriteLine($"You now have {_score} points!");
-        
+
     }
 
-    public void SaveGoals() 
+       public void SaveGoals()
     {
-        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        Console.Write("What is the filename for the goal files? ");
         string filename = Console.ReadLine();
 
 
-        string[] paths = {@"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
+        string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
 
         using (StreamWriter outputFile = new StreamWriter(filePath))
@@ -168,16 +168,17 @@ public class GoalManager
             foreach (String s in goalStringList)
             {
                 outputFile.WriteLine(s);
-            }  
-            
+            }
+
         }
 
     }
 
+
     public void LoadGoals()
     {
 
-        Console.Write("What is the filename for the goal files? Please type MyGoals.txt ");
+        Console.Write("What is the filename for the goal files? ");
         string filename = Console.ReadLine();
 
 
@@ -189,32 +190,58 @@ public class GoalManager
 
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
-        foreach (string line in lines)
+        for (int i = 1; i < lines.Length; i++)
         {
-            string[] goalparts = line.Split(":");
+            string goalType = "";
+            string details = "";
+            // string name = "";
+            // string description = "";
+            // string points = "";
+            // int target = 0;
+            // int bonus = 0;
 
-            string goalType = goalparts[0];
+            
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split(":");
+
+                goalType = parts[0];
+                details = parts[1];
+
+            }
+            // foreach (string line in lines)
+            // {
+            //     string[] otherParts = line.Split(",");
+
+            //     name = otherParts[0];
+            //     description = otherParts[1];
+            //     points = otherParts[2];
+            //     target = int.Parse(otherParts[4]);
+            //     bonus = int.Parse(otherParts[3]);
+
+            // }
+
+            // List<Goal> goals = new List<Goal>();
+
+            // if (goalType == "SimpleGoal")
+            // {
+            //     SimpleGoal goal = new SimpleGoal(name, description, points);
+            //     goals.Add(goal);
+            // }
+
+            // if (goalType == "EternalGoal")
+            // {
+            //     EternalGoal goal = new EternalGoal(name, description, points);
+            //     goals.Add(goal);
+            // }
 
         }
-
-        foreach (string line in lines)
-        {
-            string[] parts = line.Split(",");
-
-            string name = parts[0];
-            string description = parts[1];
-                    
-
-
-
-        }
-
-
-
-        //Console.ReadLine();
-
-
     }
 
 
 }
+
+
+
+

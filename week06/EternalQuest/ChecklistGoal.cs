@@ -11,8 +11,8 @@ public class ChecklistGoal : Goal
         _bonus = bonus;
 
     }
-    
-     public override string GetPoints()
+
+    public override string GetPoints()
     {
         bool completed = IsComplete();
         if (completed == true)
@@ -24,7 +24,7 @@ public class ChecklistGoal : Goal
         {
             return _points;
         }
-        
+
     }
 
     public override void RecordEvent()
@@ -50,8 +50,8 @@ public class ChecklistGoal : Goal
     public override string GetDetailsString()
     {
         bool isComplete = IsComplete();
-        
-        if ( isComplete == false)
+
+        if (isComplete == false)
         {
             return $"[ ] {GetShortName()} ({GetDescription()}) -- Curently completed: {_amountCompleted}/{_target}";
         }
@@ -64,7 +64,7 @@ public class ChecklistGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"ChecklistGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_bonus},{_target},{_amountCompleted}";  
+        return $"ChecklistGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_bonus},{_target},{_amountCompleted}";
     }
-    
+
 }

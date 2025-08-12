@@ -10,18 +10,20 @@ public class SimpleGoal : Goal
     public override void RecordEvent()
     {
         GetPoints();
+        IsComplete();
         _isComplete = true;
 
     }
 
     public override bool IsComplete()
     {
+    
         return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_isComplete}";
     }
 
 }
