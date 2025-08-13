@@ -4,14 +4,13 @@ public class SimpleGoal : Goal
 
     public SimpleGoal(string name, string description, string points) : base(name, description, points)
     {
-        _isComplete = false;
+       _isComplete = false;
     }
 
     public override void RecordEvent()
     {
         GetPoints();
-        IsComplete();
-        _isComplete = true;
+       _isComplete = true; //why is this not working????
 
     }
 

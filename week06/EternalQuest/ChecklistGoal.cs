@@ -39,7 +39,7 @@ public class ChecklistGoal : Goal
     {
         if (_target == _amountCompleted)
         {
-            return true;
+            return true; 
         }
         else
         {
@@ -49,9 +49,8 @@ public class ChecklistGoal : Goal
 
     public override string GetDetailsString()
     {
-        bool isComplete = IsComplete();
-
-        if (isComplete == false)
+        
+        if (IsComplete() == false)
         {
             return $"[ ] {GetShortName()} ({GetDescription()}) -- Curently completed: {_amountCompleted}/{_target}";
         }

@@ -114,16 +114,13 @@ public class GoalManager
     {
         Console.WriteLine("The goals are: ");
 
-        string[] nameParts;
-        string goalName = "";
-
         int i = 1;
         foreach (Goal goal in _goals)
         {
-            string line = goal.GetStringRepresentation();
-            nameParts = line.Split(":");
+            string line = goal.GetDetailsString();
+            string[] parts = line.Split(" ");
 
-            goalName = nameParts[0];
+            string goalName = parts[2];
 
             Console.Write($"{i}. ");
             Console.WriteLine(goalName);
@@ -136,20 +133,68 @@ public class GoalManager
 
         int points = int.Parse(_goals[index].GetPoints()); // Get the points of that specific goal
 
-
         _score += points; // Add the points to the total score
 
-
         Console.WriteLine($"Congratulations! You have earned {points} points!");
+        DisplayWinningMessage();
         Console.WriteLine($"You now have {_score} points!");
+    }
+
+    public void DisplayWinningMessage()
+    {
+        List<string> animations = new List<string>();
+        animations.Add("|");
+        animations.Add("/");
+        animations.Add("-");
+        animations.Add("\\");
+        animations.Add("|");
+        animations.Add("/");
+        animations.Add("-");
+        animations.Add("\\");
+
+        foreach (string a in animations)
+        {
+            Console.Write(a);
+            Thread.Sleep(700);
+            Console.Write("\b \b");
+
+        }
+
+        int n = 5;
+        for (int i = 0; i < n; ++i)
+        {
+            Stars(i + 1);
+            Spaces(n - i - 1);
+            Stars(n - i + 1);
+            Spaces(2 * i);
+            Stars(n - i);
+            Spaces(n - i - 1);
+            Stars(i + 1);
+
+            Console.WriteLine();
+        }
+    }
+
+    private static void Stars(int count)
+    {
+        for (int i = 0; i < count; ++i)
+            Console.Write("*");
+    }
+
+    private static void Spaces(int count)
+    {
+        for (int i = 0; i < count; ++i)
+            Console.Write(" ");
 
     }
 
-       public void SaveGoals()
+
+
+    public void SaveGoals()
     {
+        // Get filename from user
         Console.Write("What is the filename for the goal files? ");
         string filename = Console.ReadLine();
-
 
         string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
@@ -169,38 +214,51 @@ public class GoalManager
             {
                 outputFile.WriteLine(s);
             }
-
         }
-
     }
 
 
-    public void LoadGoals()
+    public Goal Create(string details)
     {
 
+
+        string[] otherParts = details.Split(",");
+
+        string name = otherParts[0];
+        string description = otherParts[1];
+        string points = otherParts[2];
+        int target = int.Parse(otherParts[4]);
+        int bonus = int.Parse(otherParts[3]);
+
+        SimpleGoal goal = new SimpleGoal(name, description, points);
+
+        return goal;
+
+
+    }
+    public void LoadGoals()
+    {
+        //Get filename from user
         Console.Write("What is the filename for the goal files? ");
         string filename = Console.ReadLine();
-
 
         string[] paths = { @"C:\Users", "yumas", "OneDrive", "Documents", "cse210", "cse210-projects", "week06", "EternalQuest", filename };
         string filePath = Path.Combine(paths);
 
-        //File.ReadAllLines(filePath);
-
-
         string[] lines = System.IO.File.ReadAllLines(filePath);
+
 
         for (int i = 1; i < lines.Length; i++)
         {
             string goalType = "";
             string details = "";
-            // string name = "";
-            // string description = "";
-            // string points = "";
-            // int target = 0;
-            // int bonus = 0;
+            string name = "";
+            string description = "";
+            string points = "";
+            int target = 0;
+            int bonus = 0;
 
-            
+
 
             foreach (string line in lines)
             {
@@ -210,6 +268,9 @@ public class GoalManager
                 details = parts[1];
 
             }
+
+            //Create(details);
+
             // foreach (string line in lines)
             // {
             //     string[] otherParts = line.Split(",");
@@ -222,18 +283,18 @@ public class GoalManager
 
             // }
 
-            // List<Goal> goals = new List<Goal>();
+            // //List<Goal> goals = new List<Goal>();
 
             // if (goalType == "SimpleGoal")
             // {
             //     SimpleGoal goal = new SimpleGoal(name, description, points);
-            //     goals.Add(goal);
+            //     _goals.Add(goal);
             // }
 
             // if (goalType == "EternalGoal")
             // {
             //     EternalGoal goal = new EternalGoal(name, description, points);
-            //     goals.Add(goal);
+            //     _goals.Add(goal);
             // }
 
         }
