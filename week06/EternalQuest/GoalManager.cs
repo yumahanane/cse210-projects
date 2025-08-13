@@ -12,7 +12,6 @@ public class GoalManager
     {
     }
 
-
     public void Start()
     {
         Console.WriteLine();
@@ -26,12 +25,13 @@ public class GoalManager
         Console.WriteLine("  4. Load Goals");
         Console.WriteLine("  5. Record Event");
         Console.WriteLine("  6. Quit");
-
     }
+
     public void DisplayPlayerInfo()
     {
         Console.WriteLine($"You have {_score} points.");
     }
+
     public void ListGoalNames()
     {
         Console.WriteLine("  1. Simple Goal");
@@ -50,7 +50,6 @@ public class GoalManager
             Console.WriteLine(goal.GetDetailsString());
             i++;
         }
-
     }
 
     public void CreateGoal()
@@ -77,8 +76,8 @@ public class GoalManager
 
             SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
             _goals.Add(simpleGoal);
-
         }
+
         else if (choice == 2)
         {
             Console.Write("What is the name of your goal? ");
@@ -107,9 +106,9 @@ public class GoalManager
 
             ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, target, bonus);
             _goals.Add(checklistGoal);
-
         }
     }
+    
     public void RecordEvent()
     {
         Console.WriteLine("The goals are: ");
@@ -131,7 +130,10 @@ public class GoalManager
         int answer = int.Parse(Console.ReadLine());
         int index = answer - 1; // To account for index 0
 
-        int points = int.Parse(_goals[index].GetPoints()); // Get the points of that specific goal
+        Goal theGoal = _goals[index]; // Grab the goal correspondent to the index chosen by user
+        theGoal.RecordEvent(); // Call the RecordEvent() of that type of goal
+
+        int points = int.Parse(theGoal.GetPoints()); // Get the points of that specific goal
 
         _score += points; // Add the points to the total score
 
@@ -139,6 +141,7 @@ public class GoalManager
         DisplayWinningMessage();
         Console.WriteLine($"You now have {_score} points!");
     }
+
 
     public void DisplayWinningMessage()
     {
@@ -157,7 +160,6 @@ public class GoalManager
             Console.Write(a);
             Thread.Sleep(700);
             Console.Write("\b \b");
-
         }
 
         int n = 5;
@@ -188,8 +190,6 @@ public class GoalManager
 
     }
 
-
-
     public void SaveGoals()
     {
         // Get filename from user
@@ -216,26 +216,7 @@ public class GoalManager
             }
         }
     }
-
-
-    public Goal Create(string details)
-    {
-
-
-        string[] otherParts = details.Split(",");
-
-        string name = otherParts[0];
-        string description = otherParts[1];
-        string points = otherParts[2];
-        int target = int.Parse(otherParts[4]);
-        int bonus = int.Parse(otherParts[3]);
-
-        SimpleGoal goal = new SimpleGoal(name, description, points);
-
-        return goal;
-
-
-    }
+    
     public void LoadGoals()
     {
         //Get filename from user
@@ -247,60 +228,51 @@ public class GoalManager
 
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
+        string[] sLines = lines.Skip(1).ToArray();
 
-        for (int i = 1; i < lines.Length; i++)
+        char[] separators = { ':', ',' };
+
+
+        string goalType = "";
+        string name = "";
+        string description = "";
+        string points = "";
+        //int target = 0;
+        //int bonus = 0;
+
+
+        foreach (string line in sLines)
         {
-            string goalType = "";
-            string details = "";
-            string name = "";
-            string description = "";
-            string points = "";
-            int target = 0;
-            int bonus = 0;
+            string[] parts = line.Split(separators);
 
-
-
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(":");
-
-                goalType = parts[0];
-                details = parts[1];
-
-            }
-
-            //Create(details);
-
-            // foreach (string line in lines)
-            // {
-            //     string[] otherParts = line.Split(",");
-
-            //     name = otherParts[0];
-            //     description = otherParts[1];
-            //     points = otherParts[2];
-            //     target = int.Parse(otherParts[4]);
-            //     bonus = int.Parse(otherParts[3]);
-
-            // }
-
-            // //List<Goal> goals = new List<Goal>();
-
-            // if (goalType == "SimpleGoal")
-            // {
-            //     SimpleGoal goal = new SimpleGoal(name, description, points);
-            //     _goals.Add(goal);
-            // }
-
-            // if (goalType == "EternalGoal")
-            // {
-            //     EternalGoal goal = new EternalGoal(name, description, points);
-            //     _goals.Add(goal);
-            // }
+            goalType = parts[0];
+            name = parts[1];
+            description = parts[2];
+            points = parts[3];
+            //target = int.Parse(parts[5]);
+            //bonus = int.Parse(parts[4]);
 
         }
+
+
+        if (goalType == "SimpleGoal")
+        {
+            SimpleGoal goal = new SimpleGoal(name, description, points);
+            _goals.Add(goal);
+        }
+
+        else if (goalType == "EternalGoal")
+        {
+            EternalGoal goal = new EternalGoal(name, description, points);
+            _goals.Add(goal);
+        }
+        // else if (goalType == "ChecklistGoal")
+        // {
+        //     ChecklistGoal goal = new ChecklistGoal(name, description, points, target, bonus);
+        //     _goals.Add(goal);
+        // }
+        
     }
-
-
 }
 
 

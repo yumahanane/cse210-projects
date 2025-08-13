@@ -1,0 +1,4 @@
+35
+SimpleGoal:walk,today,10,True
+EternalGoal:eat,everyday,20
+ChecklistGoal:exercise,for a month,5,20,3,1

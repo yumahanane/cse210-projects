@@ -14,8 +14,7 @@ public class ChecklistGoal : Goal
 
     public override string GetPoints()
     {
-        bool completed = IsComplete();
-        if (completed == true)
+        if (IsComplete() == true)
         {
             return _points + _bonus;
         }

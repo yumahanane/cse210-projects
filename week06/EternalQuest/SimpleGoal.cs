@@ -10,7 +10,7 @@ public class SimpleGoal : Goal
     public override void RecordEvent()
     {
         GetPoints();
-       _isComplete = true; //why is this not working????
+       _isComplete = true; 
 
     }
 
@@ -22,7 +22,7 @@ public class SimpleGoal : Goal
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_isComplete}";
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}"; // eaither that or _isComplete
     }
 
 }
