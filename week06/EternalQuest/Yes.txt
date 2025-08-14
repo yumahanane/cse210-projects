@@ -1,0 +1,4 @@
+550
+SimpleGoal:College,Apply to college,100,True
+EternalGoal:Pray,Many times daily,200
+ChecklistGoal:Exercising,Everyday at least 3 times,150,100,3,3

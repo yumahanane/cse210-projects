@@ -11,18 +11,16 @@ public class SimpleGoal : Goal
     {
         GetPoints();
        _isComplete = true; 
-
     }
 
     public override bool IsComplete()
-    {
-    
+    { 
         return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}"; // eaither that or _isComplete
+        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{IsComplete()}"; 
     }
 
 }

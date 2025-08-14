@@ -15,7 +15,7 @@ public class GoalManager
     public void Start()
     {
         Console.WriteLine();
-        DisplayPlayerInfo();
+        DisplayPlayerInfo(); // To display the score
         Console.WriteLine();
 
         Console.WriteLine("Menu Options:");
@@ -108,7 +108,7 @@ public class GoalManager
             _goals.Add(checklistGoal);
         }
     }
-    
+
     public void RecordEvent()
     {
         Console.WriteLine("The goals are: ");
@@ -116,12 +116,12 @@ public class GoalManager
         int i = 1;
         foreach (Goal goal in _goals)
         {
-            string line = goal.GetDetailsString();
+            string line = goal.GetDetailsString(); // To get the name of the goal
             string[] parts = line.Split(" ");
 
             string goalName = parts[2];
 
-            Console.Write($"{i}. ");
+            Console.Write($"{i}. "); // Display the list of goals  
             Console.WriteLine(goalName);
             i++;
         }
@@ -143,7 +143,7 @@ public class GoalManager
     }
 
 
-    public void DisplayWinningMessage()
+    public void DisplayWinningMessage() // Display a over the top celebration with animations
     {
         List<string> animations = new List<string>();
         animations.Add("|");
@@ -187,7 +187,6 @@ public class GoalManager
     {
         for (int i = 0; i < count; ++i)
             Console.Write(" ");
-
     }
 
     public void SaveGoals()
@@ -216,7 +215,7 @@ public class GoalManager
             }
         }
     }
-    
+
     public void LoadGoals()
     {
         //Get filename from user
@@ -228,18 +227,16 @@ public class GoalManager
 
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
-        string[] sLines = lines.Skip(1).ToArray();
+        string[] sLines = lines.Skip(1).ToArray(); // skip the first line (that is the score)
 
         char[] separators = { ':', ',' };
-
 
         string goalType = "";
         string name = "";
         string description = "";
         string points = "";
-        //int target = 0;
-        //int bonus = 0;
-
+        int target = 0;
+        int bonus = 0;
 
         foreach (string line in sLines)
         {
@@ -249,29 +246,28 @@ public class GoalManager
             name = parts[1];
             description = parts[2];
             points = parts[3];
-            //target = int.Parse(parts[5]);
-            //bonus = int.Parse(parts[4]);
+            
 
-        }
+            if (goalType == "SimpleGoal")
+            {
+                SimpleGoal goal = new SimpleGoal(name, description, points);
+                _goals.Add(goal);
+            }
 
+            else if (goalType == "EternalGoal")
+            {
+                EternalGoal goal = new EternalGoal(name, description, points);
+                _goals.Add(goal);
+            }
 
-        if (goalType == "SimpleGoal")
-        {
-            SimpleGoal goal = new SimpleGoal(name, description, points);
-            _goals.Add(goal);
-        }
-
-        else if (goalType == "EternalGoal")
-        {
-            EternalGoal goal = new EternalGoal(name, description, points);
-            _goals.Add(goal);
-        }
-        // else if (goalType == "ChecklistGoal")
-        // {
-        //     ChecklistGoal goal = new ChecklistGoal(name, description, points, target, bonus);
-        //     _goals.Add(goal);
-        // }
-        
+            else if (goalType == "ChecklistGoal")
+            {
+                target = int.Parse(parts[5]);
+                bonus = int.Parse(parts[4]);
+                ChecklistGoal goal = new ChecklistGoal(name, description, points, target, bonus);
+                _goals.Add(goal);
+            }
+        }       
     }
 }
 

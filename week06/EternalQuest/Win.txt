@@ -1,4 +1,4 @@
-0
-SimpleGoal:Eat,Dinner,10,False
+15
+SimpleGoal:Eat,Dinner,10,True
 EternalGoal:Pray,Daily ,20
-ChecklistGoal:Exercise,Once a day for a month,5,50,26,0
+ChecklistGoal:Exercise,Once a day for a month,5,50,26,1

@@ -1,4 +1,4 @@
-35
-SimpleGoal:walk,today,10,True
-EternalGoal:eat,everyday,20
-ChecklistGoal:exercise,for a month,5,20,3,1
+0
+SimpleGoal:eat,banana,10,False
+EternalGoal:pray,daily,20
+ChecklistGoal:exercise,today,5,50,2,0

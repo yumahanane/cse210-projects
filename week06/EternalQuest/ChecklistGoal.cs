@@ -9,27 +9,28 @@ public class ChecklistGoal : Goal
         _amountCompleted = 0;
         _target = target;
         _bonus = bonus;
-
     }
 
     public override string GetPoints()
     {
         if (IsComplete() == true)
         {
-            return _points + _bonus;
+            int points = int.Parse(_points); // convert to int since _points is a string
+            int totalPoints = points + _bonus;
+            string total = totalPoints.ToString(); // convert to string since this method returns a string
+            return total;
         }
 
         else
         {
             return _points;
         }
-
     }
 
     public override void RecordEvent()
     {
         GetPoints();
-        _amountCompleted++;
+        _amountCompleted++; // increment _amountCompleted
 
     }
 
@@ -47,15 +48,14 @@ public class ChecklistGoal : Goal
     }
 
     public override string GetDetailsString()
-    {
-        
+    {        
         if (IsComplete() == false)
         {
-            return $"[ ] {GetShortName()} ({GetDescription()}) -- Curently completed: {_amountCompleted}/{_target}";
+            return $"[ ] {GetShortName()} ({GetDescription()}) -- Currently completed: {_amountCompleted}/{_target}";
         }
         else
         {
-            return $"[X] {GetShortName()} ({GetDescription()}) -- Curently completed: {_amountCompleted}/{_target}";
+            return $"[X] {GetShortName()} ({GetDescription()}) -- Currently completed: {_amountCompleted}/{_target}";
         }
     }
 

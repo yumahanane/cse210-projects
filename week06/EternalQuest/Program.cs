@@ -1,5 +1,7 @@
 using System;
 
+// Show Creactivity: Display a over the top celebration with animations
+
 class Program
 {
     static void Main(string[] args)
@@ -17,38 +19,31 @@ class Program
             Console.Write("Select a choice from the menu: ");
             choice = int.Parse(Console.ReadLine());
 
-            if (choice == 1)
+
+            if (choice == 1) // Create New Goal
             {
                 goalManager.CreateGoal();
-
             }
 
-            if (choice == 2)
+            else if (choice == 2) // List Goals
             {
                 goalManager.ListGoalDetails();
-
             }
 
-            if (choice == 3)
+            else if (choice == 3) // Save Goals
             {
                 goalManager.SaveGoals();
-
             }
 
-            if (choice == 4)
+            else if (choice == 4) // Load Goals
             {
-
                 goalManager.LoadGoals();
             }
 
-            if (choice == 5)
+            else if (choice == 5) // Record Event
             {
                 goalManager.RecordEvent();
             }
-
         }
-        
-
-
     }
 }
