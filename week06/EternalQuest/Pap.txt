@@ -1,0 +1,6 @@
+110
+SimpleGoal:eat,banana,10,True
+EternalGoal:cry,today,20
+SimpleGoal:walk,sad,20,True
+ChecklistGoal:study,everyday,55,50,2,2
+ChecklistGoal:dance,daily,10,30,2,0

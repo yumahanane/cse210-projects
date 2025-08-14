@@ -2,6 +2,7 @@ using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.IO;
 using System.Threading.Channels;
+using System.Runtime.CompilerServices;
 
 public class GoalManager
 {
@@ -116,13 +117,8 @@ public class GoalManager
         int i = 1;
         foreach (Goal goal in _goals)
         {
-            string line = goal.GetDetailsString(); // To get the name of the goal
-            string[] parts = line.Split(" ");
-
-            string goalName = parts[2];
-
-            Console.Write($"{i}. "); // Display the list of goals  
-            Console.WriteLine(goalName);
+            Console.Write($"{i}. "); 
+            Console.WriteLine(goal.GetShortName()); // Display the list of goals' names  
             i++;
         }
 
@@ -246,7 +242,7 @@ public class GoalManager
             name = parts[1];
             description = parts[2];
             points = parts[3];
-            
+
 
             if (goalType == "SimpleGoal")
             {
