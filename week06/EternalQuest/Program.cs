@@ -1,6 +1,6 @@
 using System;
 
-// Show Creactivity: Display a over the top celebration with animations
+// Show Creativity: Display a over the top celebration with animations
 
 class Program
 {
